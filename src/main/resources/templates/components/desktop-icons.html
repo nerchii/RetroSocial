@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+<div th:fragment="iconFragment(iconSrc, label, top, left)">
+    <div class="desktop-icon" th:style="'top:' + ${top} + 'px; left:' + ${left} + 'px;'">
+        <div style="margin: 0 auto; width:48px; height:48px;">
+            <img th:src="@{${iconSrc}}" th:alt="${label + ' icon'}">
+        </div>
+        <span th:text="${label}"></span>
+    </div>
+</div>
+
+</body>
+</html>

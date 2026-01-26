@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Win95</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<!--desktop icons-->
+<div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/computer_explorer_cool-0.png', 'My Computer', 40, 40)}"></div>
+<div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/world-3.png', 'Web browser', 150, 40)}"></div>
+<div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/recycle_bin_empty-5.png', 'Recycle Bin', 500, 40)}"></div>
+
+<!-- Main Window -->
+<div class="retro-window">
+    <div class="window-title-bar">
+        <div class="window-title"><img th:src="@{/win98_icons/internet_connection_wiz-1.png}" alt="worldIcon">  Chatterbox95.com - Internet's Hub of Cha... - Web browser</div>
+        <div class="window-controls">
+            <div class="window-btn">_</div><div class="window-btn">□</div><div class="window-btn">×</div>
+        </div>
+    </div>
+
+    <div class="menu-bar">
+        <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span>
+    </div>
+
+    <div class="menu-bar">
+        <img th:src="@{/win98_icons/directory_open_cool-5.png}" title="Open">
+        <img th:src="@{/win98_icons/printer-2.png}" title="Print">
+        <img th:src="@{/win98_icons/envelope_closed-0.png}" title="Message">
+        <img th:src="@{/win98_icons/homepage_alt.png}" title="Home">
+        <img th:src="@{/win98_icons/search_directory-2.png}" title="Search">
+        <img th:src="@{/win98_icons/address_book_card_copy-0.png}" title="Copy">
+        <img th:src="@{/win98_icons/address_book_card.png}" title="Paste">
+    </div>
+
+    <div class="window-content">
+        <h1 class="retro-title">Welcome to Chatterbox!! :)</h1>
+
+<!--posts form-->
+        <form th:action="@{/post}" th:object="${newPost}" method="post" class="retro-form">
+            <textarea th:field="*{content}" placeholder="Write something..." class="retro-textarea" required></textarea>
+            <button type="submit" class="retro-button">Post</button>
+        </form>
+
+        <h2 class="retro-subtitle">View most recent posts: </h2>
+<!--posts-->
+        <div th:each="post : ${posts}" class="retro-post">
+            <p class="post-content" th:text="${post.content}"></p>
+            <small class="post-date" th:text="${#dates.format(post.createdAt, 'dd.MM.yyyy HH:mm')}"></small>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Taskbar -->
+<div class="retro-taskbar">
+    <div class="start-button">
+        <img th:src="@{/win98_icons/windows-5.png}" alt="Windows Icon">  Start
+    </div>
+    <div class="system-tray">
+        <span id="clock">3:46 PM</span>
+    </div>
+</div>
+<script th:src="@{/js/desktop.js}"></script>
+</body>
+</html>
