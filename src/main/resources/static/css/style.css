@@ -50,6 +50,7 @@ body::after {
 
 /* Main Container */
 .retro-window {
+    position: absolute;
     background-color: #c0c0c0;
     border-width: 2px;
     border-style: solid;
@@ -64,8 +65,8 @@ body::after {
     margin: 30px auto;
     max-width: 800px;
     max-height: 90%;
-    position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 
@@ -79,6 +80,7 @@ body::after {
     align-items: center;
     border-bottom: 2px solid #c0c0c0;
     user-select: none;
+    cursor: move;
 }
 
 .window-title {
