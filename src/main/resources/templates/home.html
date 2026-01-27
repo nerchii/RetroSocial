@@ -56,16 +56,15 @@
     </div>
 </div>
 
-
-<!-- Taskbar -->
-<div class="retro-taskbar">
-    <div class="start-button">
-        <img th:src="@{/win98_icons/windows-5.png}" alt="Windows Icon"> Start
-    </div>
-    <div class="system-tray">
-        <span id="clock">3:46 PM</span>
-    </div>
+<div th:replace="components/window :: retroWindow(
+    'My App',
+    @{/win98_icons/ac_plug-1.png},
+    '<p>This is the content inside the window!</p>'
+)">
 </div>
+
+
+<div th:insert="components/taskbar :: taskbar"></div>
 
 
 <script th:src="@{/js/desktop.js}"></script>

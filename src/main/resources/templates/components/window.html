@@ -1,0 +1,23 @@
+<div th:fragment="retroWindow(windowTitle, windowIcon, content)">
+    <div class="retro-window">
+        <div class="window-title-bar">
+            <div class="window-title">
+                <img th:src="${windowIcon}" alt="window icon">
+                <span th:text="${windowTitle}">Window Title</span>
+            </div>
+            <div class="window-controls">
+                <div class="window-btn">_</div>
+                <div class="window-btn">□</div>
+                <div class="window-btn">×</div>
+            </div>
+        </div>
+
+        <div class="menu-bar">
+            <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span>
+        </div>
+
+        <div class="window-content" th:utext="${content}">
+
+        </div>
+    </div>
+</div>
