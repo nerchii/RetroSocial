@@ -1,0 +1,28 @@
+<div th:fragment="chatterboxApp">
+  <div class="menu-bar">
+    <img th:src="@{/win98_icons/directory_open_cool-5.png}" title="Open">
+    <img th:src="@{/win98_icons/printer-2.png}" title="Print">
+    <img th:src="@{/win98_icons/envelope_closed-0.png}" title="Message">
+    <img th:src="@{/win98_icons/homepage_alt.png}" title="Home">
+    <img th:src="@{/win98_icons/search_directory-2.png}" title="Search">
+    <img th:src="@{/win98_icons/address_book_card_copy-0.png}" title="Copy">
+    <img th:src="@{/win98_icons/address_book_card.png}" title="Paste">
+  </div>
+
+  <div class="window-content">
+    <h1 class="retro-title">Welcome to Chatterbox!! :)</h1>
+
+    <!--posts form-->
+    <form th:action="@{/post}" th:object="${newPost}" method="post" class="retro-form">
+      <textarea th:field="*{content}" placeholder="Write something..." class="retro-textarea" required></textarea>
+      <button type="submit" class="retro-button">Post</button>
+    </form>
+
+    <h2 class="retro-subtitle">View most recent posts: </h2>
+    <!--posts-->
+    <div th:each="post : ${posts}" class="retro-post">
+      <p class="post-content" th:text="${post.content}"></p>
+      <small class="post-date" th:text="${#dates.format(post.createdAt, 'dd.MM.yyyy HH:mm')}"></small>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.desktop-icon {
+    position: absolute;
+    width: 80px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.desktop-icon img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 4px;
+}
+
+.desktop-icon span {
+    display: block;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #000000;;
+    font-size: 15px;
+    background-color: rgba(0, 0, 128, 0.3);
+    margin-top: 2px;
+}

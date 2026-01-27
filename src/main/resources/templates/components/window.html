@@ -1,4 +1,4 @@
-<div th:fragment="retroWindow(windowTitle, windowIcon, content)">
+<div th:fragment="retroWindow(windowTitle, windowIcon)">
     <div class="retro-window">
         <div class="window-title-bar">
             <div class="window-title">
@@ -16,8 +16,8 @@
             <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span>
         </div>
 
-        <div class="window-content" th:utext="${content}">
-
+        <div class="window-content">
+            <div th:replace="~{::chatterboxContent}"></div>
         </div>
     </div>
 </div>

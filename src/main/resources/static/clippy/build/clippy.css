@@ -17,7 +17,7 @@
 .clippy-content {
     max-width: 200px;
     min-width: 120px;
-    font-family: "Microsoft Sans", sans-serif;
+    font-family: 'W95Font';
     font-size: 10pt;
 }
 
@@ -58,5 +58,21 @@
     left: 100%;
     margin-left: -50px;
     background-position: 0px -16px;
+}
+
+.clippy-input {
+    position: absolute;
+    width: 240px;
+    min-height: 32px;
+    max-height: 200px;
+    resize: none;
+    overflow: hidden;
+    font-family: 'W95Font';
+    font-size: 17px;
+    padding: 4px;
+    border: 3px solid black;
+    background: white;
+    box-shadow: 2px 2px #808080;
+    z-index: 9999;
 }
 

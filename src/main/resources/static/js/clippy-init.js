@@ -13,13 +13,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             $('.clippy-input').remove();
 
-            var input = $('<input type="text" class="clippy-input" placeholder="Ask me something...">');
+            var input = $('<textarea class="clippy-input" placeholder="Ask me something..."></textarea>');
+
             input.css({
                 position: 'absolute', top: e.pageY + 'px', left: e.pageX + 'px', zIndex: 9999
             });
 
             $('body').append(input);
             input.focus();
+            input.on('input', function () {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+
 
             input.on('keydown', function (ev) {
                 if (ev.key === 'Enter') {
@@ -47,6 +53,10 @@ function local(text) {
     if (text.includes("help")) return "Try clicking around the desktop or ask me anything!";
     if (text.includes("game")) return "There are fun games in the Games folder!";
     if (text.includes("email")) return "Click the Mail icon to check your messages.";
+
+    if (text.includes("fanart")) return "I dont want to talk about it.... please...";
+
+
 
     return "I'm not sure how to help with that yet. :( ";
 }
