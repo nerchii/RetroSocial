@@ -3,5 +3,5 @@ function updateClock() {
     const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
     document.getElementById('clock').textContent = timeString;
 }
-setInterval(updateClock, 30000);
+setInterval(updateClock, 5000);
 updateClock();

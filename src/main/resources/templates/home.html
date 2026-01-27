@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Win95</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/clippy/build/clippy.css}"/>
 </head>
 <body>
 <!--desktop icons-->
@@ -13,9 +14,13 @@
 <!-- Main Window -->
 <div class="retro-window">
     <div class="window-title-bar">
-        <div class="window-title"><img th:src="@{/win98_icons/internet_connection_wiz-1.png}" alt="worldIcon">  Chatterbox95.com - Internet's Hub of Cha... - Web browser</div>
+        <div class="window-title"><img th:src="@{/win98_icons/internet_connection_wiz-1.png}" alt="worldIcon">
+            Chatterbox95.com - Internet's Hub of Cha... - Web browser
+        </div>
         <div class="window-controls">
-            <div class="window-btn">_</div><div class="window-btn">□</div><div class="window-btn">×</div>
+            <div class="window-btn">_</div>
+            <div class="window-btn">□</div>
+            <div class="window-btn">×</div>
         </div>
     </div>
 
@@ -36,14 +41,14 @@
     <div class="window-content">
         <h1 class="retro-title">Welcome to Chatterbox!! :)</h1>
 
-<!--posts form-->
+        <!--posts form-->
         <form th:action="@{/post}" th:object="${newPost}" method="post" class="retro-form">
             <textarea th:field="*{content}" placeholder="Write something..." class="retro-textarea" required></textarea>
             <button type="submit" class="retro-button">Post</button>
         </form>
 
         <h2 class="retro-subtitle">View most recent posts: </h2>
-<!--posts-->
+        <!--posts-->
         <div th:each="post : ${posts}" class="retro-post">
             <p class="post-content" th:text="${post.content}"></p>
             <small class="post-date" th:text="${#dates.format(post.createdAt, 'dd.MM.yyyy HH:mm')}"></small>
@@ -52,16 +57,21 @@
 </div>
 
 
-
 <!-- Taskbar -->
 <div class="retro-taskbar">
     <div class="start-button">
-        <img th:src="@{/win98_icons/windows-5.png}" alt="Windows Icon">  Start
+        <img th:src="@{/win98_icons/windows-5.png}" alt="Windows Icon"> Start
     </div>
     <div class="system-tray">
         <span id="clock">3:46 PM</span>
     </div>
 </div>
+
+
 <script th:src="@{/js/desktop.js}"></script>
+<script th:src="@{/js/clippy-init.js}"></script>
+<script th:src="@{/clippy/build/clippy.min.js}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.7.0/dist/transformers.min.js"></script>
 </body>
 </html>
