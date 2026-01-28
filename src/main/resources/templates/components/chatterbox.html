@@ -13,13 +13,13 @@
     <h1 class="retro-title">Welcome to Chatterbox!! :)</h1>
 
     <!--posts form-->
-    <form th:action="@{/post}" th:object="${newPost}" method="post" class="retro-form">
-      <textarea th:field="*{content}" placeholder="Write something..." class="retro-textarea" required></textarea>
+    <form id="postForm" class="retro-form">
+      <textarea id="content" placeholder="Write something..." class="retro-textarea" required></textarea>
       <button type="submit" class="retro-button">Post</button>
     </form>
 
     <h2 class="retro-subtitle">View most recent posts: </h2>
-    <div id="posts" class = "retro-post"></div>
+    <div id="posts"></div>
 
   </div>
 </div>

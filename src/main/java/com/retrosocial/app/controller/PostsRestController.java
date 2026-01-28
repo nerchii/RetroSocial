@@ -14,14 +14,14 @@ public class PostsRestController {
         this.postRepository = postRepository;
     }
 
-//    @PostMapping("/posts")
-//    public Post createPost(@RequestBody Post post) {
-//        return postRepository.save(post);
-//    }
-
     @GetMapping("api/posts")
     public List<Post> getPosts(){
         return postRepository.findAll();
+    }
+
+    @PostMapping("api/posts")
+    public Post createPost(@RequestBody Post post) {
+        return postRepository.save(post);
     }
 
     @DeleteMapping("api/posts/{id}")
