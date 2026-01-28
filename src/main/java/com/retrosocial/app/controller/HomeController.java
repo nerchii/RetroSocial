@@ -29,6 +29,12 @@ public class HomeController {
         model.addAttribute("newPost", new Post());
         return "home";
     }
+
+    @GetMapping("/test")
+    public String posts() {
+        return "posts";
+    }
+
     @PostMapping("/post")
     public String createPost(@ModelAttribute("newPost") Post post) {
         postRepository.save(post);

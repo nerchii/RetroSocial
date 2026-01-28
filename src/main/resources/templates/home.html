@@ -25,17 +25,32 @@
     </div>
 </div>
 
+<!--game,, fix!!-->
+<!--<div th:insert="~{components/window :: retroWindow(-->
+<!--    'Game Demo',-->
+<!--    @{/win98_icons/internet_connection_wiz-1.png}-->
+<!--)}">-->
+<!--    <div th:fragment="chatterboxContent">-->
+<!--        <iframe-->
+<!--                class="game_container"-->
+<!--                src="https://pub-e6b6e92ccc064ce09248fef136b43f69.r2.dev/gamre.html"-->
+<!--                height="800"-->
+<!--                width="770"-->
+<!--                title="still a demo version :)">-->
+<!--        </iframe>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <!--taskbar-->
 <div th:insert="components/taskbar :: taskbar"></div>
 
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script th:src="@{/js/desktop.js}"></script>
-<script th:src="@{/js/draggable_window.js}"></script>
+<script th:src="@{/js/window.js}"></script>
 <script th:src="@{/js/clippy-init.js}"></script>
 <script th:src="@{/clippy/build/clippy.min.js}"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.7.0/dist/transformers.min.js"></script>
 </body>
 </html>

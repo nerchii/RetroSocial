@@ -19,10 +19,7 @@
     </form>
 
     <h2 class="retro-subtitle">View most recent posts: </h2>
-    <!--posts-->
-    <div th:each="post : ${posts}" class="retro-post">
-      <p class="post-content" th:text="${post.content}"></p>
-      <small class="post-date" th:text="${#dates.format(post.createdAt, 'dd.MM.yyyy HH:mm')}"></small>
-    </div>
+    <div id="posts" class = "retro-post"></div>
+
   </div>
 </div>

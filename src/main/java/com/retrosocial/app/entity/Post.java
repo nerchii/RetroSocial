@@ -37,4 +37,15 @@ public class Post {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }
+
