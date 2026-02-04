@@ -6,6 +6,10 @@
     user-select: none;
 }
 
+.desktop-icon.dragging {
+    cursor: grabbing;
+}
+
 .desktop-icon img {
     width: 48px;
     height: 48px;

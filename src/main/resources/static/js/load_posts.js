@@ -40,16 +40,15 @@ function reloadData() {
             $.each(resultData, function (index, post) {
                 $("#posts").append(`
                   <div class="retro-post">
+                    <small class="post-username">${post.username || 'guest'}</small>
+                    
                     <p class="post-content">${post.content}</p>
-                    <small class="post-date">
-                      ${new Date(post.createdAt).toLocaleString()}
-                    </small>
-                    <button class="retro-button" type="button" onclick="test(${post.id})">
-                      Delete post
-                    </button>
+                    
+                    <small class="post-date">${new Date(post.createdAt).toLocaleString()}</small>
+                    
+                    <button class="post-delete-btn" type="button" onclick="test(${post.id})">Delete post</button>
                   </div>
                 `);
-
             });
         },
         error: function (jqXHR, textStatus, errorThrown) {

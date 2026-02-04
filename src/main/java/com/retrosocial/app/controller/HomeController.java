@@ -37,6 +37,9 @@ public class HomeController {
 
     @PostMapping("/post")
     public String createPost(@ModelAttribute("newPost") Post post) {
+        if (post.getUsername() == null || post.getUsername().isBlank()) {
+            post.setUsername("guest");
+        }
         postRepository.save(post);
         return "redirect:/";
     }

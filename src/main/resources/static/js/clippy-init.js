@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clippy.load("Clippy", function (agent) {
         agent.show();
         // agent.moveTo(300, 400);
-        agent.speak("Hi! I'm Clippy, your personal assistant, if you need help just say the word!");
+        agent.speak("Hi! I'm Clippy, your personal assistant, if you need help just say the word! (right click on me)");
 
         agent._el.on('contextmenu', function (e) {
             e.preventDefault();
@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function local(text) {
     text = text.toLowerCase();
-
     if (text.includes("hello")||text.includes("hi")) return "Hello! How can I help you?";
     if (text.includes("post")||text.includes("forum")) return "You can post messages in the Chatterbox95 forum.";
     if (text.includes("bye")) return "Goodbye! I'll just hang around here.";
@@ -53,10 +52,7 @@ function local(text) {
     if (text.includes("help")) return "Try clicking around the desktop or ask me anything!";
     if (text.includes("game")) return "There are fun games in the Games folder!";
     if (text.includes("email")) return "Click the Mail icon to check your messages.";
-
     if (text.includes("fanart")) return "I dont want to talk about it.... please...";
-
-
 
     return "I'm not sure how to help with that yet. :( ";
 }

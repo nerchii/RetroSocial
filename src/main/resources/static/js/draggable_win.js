@@ -1,4 +1,4 @@
-let topZIndex = 1;
+let topZIndex = 100;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.retro-window').forEach(windowEl => {
@@ -6,9 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const rect = windowEl.getBoundingClientRect();
         windowEl.style.position = 'absolute';
 
-        const margin = 50;
-        windowEl.style.left = margin + 'px';
-        windowEl.style.top = margin + 'px';
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const left = (viewportWidth - rect.width) / 2;
+        const top = (viewportHeight - rect.height) / 3;
+
+        windowEl.style.left = `${left}px`;
+        windowEl.style.top = `${top}px`;
 
 
         const header = windowEl.querySelector('.window-title-bar');
