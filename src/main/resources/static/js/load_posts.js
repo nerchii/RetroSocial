@@ -4,35 +4,33 @@ document.getElementById("postForm").addEventListener("submit", function (e) {
     const content = document.getElementById("content").value;
 
     fetch("/api/posts", {
-        method: "POST",
-        headers: {
+        method: "POST", headers: {
             "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
+        }, body: JSON.stringify({
             content: content
         })
     })
-    .then(res => res.json())
-    .then(() => {
-        document.getElementById("content").value = "";
-        reloadData();
-    })
-    .catch(err => console.error(err));
+        .then(res => res.json())
+        .then(() => {
+            document.getElementById("content").value = "";
+            reloadData();
+        })
+        .catch(err => console.error(err));
 });
 
-function test(id) {
-        fetch("/api/posts/" + id, {
-            method: "DELETE"
-        });
-        reloadData();
-    }
+function deletePost(id) {
+    fetch("/api/posts/" + id, {
+        method: "DELETE"
+    })
+        .then(() => {
+            reloadData();
+        })
+        .catch((err) => console.error(err));
+}
 
 function reloadData() {
     $.ajax({
-        url: "/api/posts",
-        type: "GET",
-        contentType: "application/json; charset=utf-8",
-        success: function (resultData) {
+        url: "/api/posts", type: "GET", contentType: "application/json; charset=utf-8", success: function (resultData) {
             console.log(resultData);
 
             $("#posts").empty();
@@ -46,17 +44,16 @@ function reloadData() {
                     
                     <small class="post-date">${new Date(post.createdAt).toLocaleString()}</small>
                     
-                    <button class="post-delete-btn" type="button" onclick="test(${post.id})">Delete post</button>
+                    <button class="post-delete-btn" type="button" onclick="deletePost(${post.id})">Delete post</button>
                   </div>
                 `);
             });
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
+        }, error: function (jqXHR, textStatus, errorThrown) {
             console.error("Error:", textStatus);
-        },
-        timeout: 120000
+        }, timeout: 120000
     });
 }
+
 reloadData();
 
 
