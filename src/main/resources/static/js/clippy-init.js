@@ -45,14 +45,13 @@ function local(text) {
     if (text.includes("hello")||text.includes("hi")) return "Hello! How can I help you?";
     if (text.includes("post")||text.includes("forum")) return "You can post messages in the Chatterbox95 forum.";
     if (text.includes("bye")) return "Goodbye! I'll just hang around here.";
-    if (text.includes("settings")) return "Open the Control Panel to change your settings.";
+//    if (text.includes("settings")) return "Open the Control Panel to change your settings.";
     if (text.includes("clock")) return "The clock is on the taskbar at the bottom right of your screen.";
     if (text.includes("browser")) return "Click the Web Browser icon to surf the internet.";
     if (text.includes("recycle")) return "Drag items to the Recycle Bin to delete them, but you can restore later!";
     if (text.includes("help")) return "Try clicking around the desktop or ask me anything!";
-    if (text.includes("game")) return "There are fun games in the Games folder!";
-    if (text.includes("email")) return "Click the Mail icon to check your messages.";
-    if (text.includes("fanart")) return "I dont want to talk about it.... please...";
+    if (text.includes("game") || text.includes("hop")) return "You can play HOP.EXE, it's a multiplayer game controlled with A, W, D, and arrow keys.";
+
 
     return "I'm not sure how to help with that yet. :( ";
 }

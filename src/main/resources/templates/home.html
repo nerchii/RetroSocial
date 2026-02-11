@@ -16,14 +16,15 @@
 
 
 <!--chaterbox-->
-<div th:insert="~{components/window :: retroWindow(' Chatterbox95',@{/win98_icons/internet_connection_wiz-1.png})}">
+<div th:insert="~{components/window :: retroWindow(' Chatterbox95',@{/win98_icons/internet_connection_wiz-1.png}, 'chatterboxWindow')}">
     <div th:fragment="chatterboxContent">
         <div th:replace="~{components/chatterbox :: chatterboxApp}"></div>
     </div>
 </div>
 
 <!--game-->
-<div th:insert="~{components/game_window :: retroWindow(' Hop.exe', @{/win98_icons/tree-1.png})}">
+<div id="gameWindow" th:insert="~{components/game_window :: retroWindow(' Hop.exe', @{/win98_icons/tree-1.png}, 'gameWindow')}"
+     th:attr="id='gameWindow'">
 </div>
 
 

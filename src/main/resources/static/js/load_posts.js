@@ -34,6 +34,7 @@ function reloadData() {
             console.log(resultData);
 
             $("#posts").empty();
+            resultData.reverse();
 
             $.each(resultData, function (index, post) {
                 $("#posts").append(`

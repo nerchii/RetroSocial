@@ -1,5 +1,5 @@
-<div th:fragment="retroWindow(windowTitle, windowIcon)">
-    <div class="retro-window">
+<div th:fragment="retroWindow(windowTitle, windowIcon, windowId)">
+    <div class="retro-window" th:attr="id=${windowId}">
         <div class="window-title-bar">
             <div class="window-title">
                 <img th:src="${windowIcon}" alt="window icon">

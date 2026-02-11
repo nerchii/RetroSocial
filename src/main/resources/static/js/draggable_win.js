@@ -9,12 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
 
-        const left = (viewportWidth - rect.width) / 2;
-        const top = (viewportHeight - rect.height) / 3;
+        let left, top;
+        if (windowEl.id === 'chatterboxWindow') {
+            left = (viewportWidth - rect.width) / 2 - 200;   // left
+            top  = (viewportHeight - rect.height) / 2 - 100; // up
+        } else if (windowEl.id === 'gameWindow') {
+            left = (viewportWidth - rect.width) / 2 + 200;   // right
+            top  = (viewportHeight - rect.height) / 2 + 50; // down
+        } else {
+            // default: center
+            left = (viewportWidth - rect.width) / 2;
+            top = (viewportHeight - rect.height) / 3;
+        }
 
         windowEl.style.left = `${left}px`;
         windowEl.style.top = `${top}px`;
-
 
         const header = windowEl.querySelector('.window-title-bar');
         let offsetX, offsetY, isDragging = false;
@@ -41,6 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('mouseup', () => {
             isDragging = false;
             document.body.style.userSelect = 'auto';
+        });
+
+        windowEl.addEventListener('mousedown', () => {
+            topZIndex++;
+            windowEl.style.zIndex = topZIndex;
         });
     });
 });
