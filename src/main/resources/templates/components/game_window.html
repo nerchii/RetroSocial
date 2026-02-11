@@ -1,0 +1,31 @@
+<div th:fragment="retroWindow(windowTitle, windowIcon)">
+    <div class="retro-window">
+        <div class="window-title-bar">
+            <div class="window-title">
+                <img th:src="${windowIcon}" alt="window icon">
+                <span th:text="${windowTitle}">Window Title</span>
+            </div>
+            <div class="window-controls">
+                <div class="window-btn">_</div>
+                <div class="window-btn">□</div>
+                <div class="window-btn">×</div>
+            </div>
+        </div>
+
+        <div class="menu-bar">
+            <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span>
+        </div>
+
+        <div class="game-content" style="overflow: hidden;">
+            <div th:fragment="chatterboxContent">
+                <iframe
+                        class="game_container"
+                        src="https://pub-e6b6e92ccc064ce09248fef136b43f69.r2.dev/gamre.html"
+                        height="435"
+                        width="770"
+                        title="still a demo version :)">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>

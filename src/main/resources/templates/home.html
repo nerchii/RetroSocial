@@ -10,36 +10,21 @@
 </head>
 <body>
 <!--desktop icons-->
-<div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/computer_explorer_cool-0.png', 'My Computer', 40, 40)}"></div>
+<div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/computer_explorer_cool-0.png','My Computer',40,40)}"></div>
 <div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/world-3.png', 'Web browser', 150, 40)}"></div>
 <div th:insert="~{components/desktop-icons :: iconFragment('/win98_icons/recycle_bin_empty-5.png', 'Recycle Bin', 500, 40)}"></div>
 
 
 <!--chaterbox-->
-<div th:insert="~{components/window :: retroWindow(
-    'Chatterbox95',
-    @{/win98_icons/internet_connection_wiz-1.png}
-)}">
+<div th:insert="~{components/window :: retroWindow(' Chatterbox95',@{/win98_icons/internet_connection_wiz-1.png})}">
     <div th:fragment="chatterboxContent">
         <div th:replace="~{components/chatterbox :: chatterboxApp}"></div>
     </div>
 </div>
 
-<!--game,, fix!!-->
-<!--<div th:insert="~{components/window :: retroWindow(-->
-<!--    'Game Demo',-->
-<!--    @{/win98_icons/internet_connection_wiz-1.png}-->
-<!--)}">-->
-<!--    <div th:fragment="chatterboxContent">-->
-<!--        <iframe-->
-<!--                class="game_container"-->
-<!--                src="https://pub-e6b6e92ccc064ce09248fef136b43f69.r2.dev/gamre.html"-->
-<!--                height="800"-->
-<!--                width="770"-->
-<!--                title="still a demo version :)">-->
-<!--        </iframe>-->
-<!--    </div>-->
-<!--</div>-->
+<!--game-->
+<div th:insert="~{components/game_window :: retroWindow(' Hop.exe', @{/win98_icons/tree-1.png})}">
+</div>
 
 
 <!--taskbar-->
@@ -53,6 +38,6 @@
 <script th:src="@{/js/clippy-init.js}"></script>
 <script th:src="@{/clippy/build/clippy.min.js}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.7.0/dist/transformers.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@xenova/transformers@2.7.0/dist/transformers.min.js"></script>
 </body>
 </html>

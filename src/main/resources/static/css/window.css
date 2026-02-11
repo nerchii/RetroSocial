@@ -127,9 +127,19 @@
     background-color: #c0c0c0;
     margin: 0;
     min-height: 150px;
-    max-height: 700px;
+    max-height: 450px;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-bottom: 70px;
+}
+
+.game-content {
+    padding: 10px;
+    background-color: #c0c0c0;
+    margin: 0;
+    min-height: 150px;
+    max-height: 450px;
+    overflow: hidden;
 }
 
 .window-content::-webkit-scrollbar {
