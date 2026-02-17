@@ -53,6 +53,9 @@ public class Post {
         this.content = content;
     }
 
+   @Transient
+    public void setUsername(String username) {}
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

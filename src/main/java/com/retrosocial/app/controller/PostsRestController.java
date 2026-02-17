@@ -24,10 +24,11 @@ public class PostsRestController {
     }
 
     @PostMapping("api/posts")
-    public Post createPost(@RequestBody Post post) {
-        // For now, REST-created posts are attributed to a default "guest" user
-        User user = userRepository.findByUsername("guest")
-                .orElseGet(() -> userRepository.save(new User("guest")));
+    public Post createPost(@RequestBody Post post, @RequestParam(required = false) String username) {
+        String effectiveUsername = (username == null || username.isBlank()) ? "guest" : username;
+
+        User user = userRepository.findByUsername(effectiveUsername)
+                .orElseGet(() -> userRepository.save(new User(effectiveUsername)));
 
         post.setUser(user);
         return postRepository.save(post);
