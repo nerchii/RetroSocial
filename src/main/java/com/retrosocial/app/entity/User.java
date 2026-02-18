@@ -22,7 +22,6 @@ public class User {
 
     public User(String username) {
         this.username = (username == null || username.isBlank()) ? "guest" : username;
-
     }
 
     public long getId() {

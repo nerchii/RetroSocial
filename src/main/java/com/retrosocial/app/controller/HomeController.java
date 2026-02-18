@@ -43,8 +43,7 @@ public class HomeController {
     }
 
     @PostMapping("/post")
-    public String createPost(@ModelAttribute("newPost") Post post,
-                             @RequestParam String username) {
+    public String createPost(@ModelAttribute("newPost") Post post, @RequestParam String username) {
         if (username == null || username.isBlank()) {
             username = "guest";
         }

@@ -7,6 +7,8 @@ import com.retrosocial.app.repo.UserRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class PostDataLoader implements CommandLineRunner {
 

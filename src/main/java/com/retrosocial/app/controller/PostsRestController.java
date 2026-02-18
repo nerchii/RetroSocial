@@ -4,6 +4,7 @@ import com.retrosocial.app.entity.Post;
 import com.retrosocial.app.entity.User;
 import com.retrosocial.app.repo.PostRepo;
 import com.retrosocial.app.repo.UserRepo;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class PostsRestController {
     }
 
     @PostMapping("api/posts")
-    public Post createPost(@RequestBody Post post, @RequestParam(required = false) String username) {
+    public Post createPost(@Valid @RequestBody Post post, @RequestParam(required = false) String username) {
         String effectiveUsername = (username == null || username.isBlank()) ? "guest" : username;
 
         User user = userRepository.findByUsername(effectiveUsername)

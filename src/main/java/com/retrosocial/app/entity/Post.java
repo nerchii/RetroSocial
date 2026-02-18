@@ -1,5 +1,7 @@
 package com.retrosocial.app.entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,6 +13,7 @@ public class Post {
     private Long id;
 
     @Column(nullable = false, length = 500)
+    @NotBlank(message = "Content cannot be blank")
     private String content;
 
     @Column(name = "created_at", nullable = false)
