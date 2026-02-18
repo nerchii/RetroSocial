@@ -1,9 +1,15 @@
 document.getElementById("postForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const username = document.getElementById("username").value;
     const content = document.getElementById("content").value;
 
-    fetch("/api/posts", {
+    let url = "/api/posts";
+    if (username && username.trim() !== "") {
+        url += "?username=" + encodeURIComponent(username.trim());
+    }
+
+    fetch(url, {
         method: "POST", headers: {
             "Content-Type": "application/json"
         }, body: JSON.stringify({
@@ -12,6 +18,7 @@ document.getElementById("postForm").addEventListener("submit", function (e) {
     })
         .then(res => res.json())
         .then(() => {
+            document.getElementById("username").value = "";
             document.getElementById("content").value = "";
             reloadData();
         })
@@ -39,11 +46,11 @@ function reloadData() {
             $.each(resultData, function (index, post) {
                 $("#posts").append(`
                   <div class="retro-post">
-                    <small class="post-username">${post.username || 'guest'}</small>
+                    <small class="post-username">${(post.user && post.user.username) || 'guest'}</small>
                     
                     <p class="post-content">${post.content}</p>
                     
-                    <small class="post-date">${new Date(post.createdAt).toLocaleString()}</small>
+                    <small class="post-date">${post.createdAt ? new Date(post.createdAt).toLocaleString() : ''}</small>
                     
                     <button class="post-delete-btn" type="button" onclick="deletePost(${post.id})">Delete post</button>
                   </div>

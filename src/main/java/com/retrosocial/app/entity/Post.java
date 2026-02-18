@@ -1,5 +1,7 @@
 package com.retrosocial.app.entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,18 +13,16 @@ public class Post {
     private Long id;
 
     @Column(nullable = false, length = 500)
+    @NotBlank(message = "Content cannot be blank")
     private String content;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false, length = 50)
-    private String username = "guest";
 
-
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
 
 
     @PrePersist
@@ -38,10 +38,10 @@ public class Post {
         this.content = content;
     }
 
-    public Post(String content, String username) {
+    public Post(String content, User user) {
         //za test
         this.content = content;
-        this.username = (username == null || username.isBlank()) ? "guest" : username;
+        this.user = user;
     }
 
     public Long getId() {
@@ -56,26 +56,29 @@ public class Post {
         this.content = content;
     }
 
+   @Transient
+    public void setUsername(String username) {}
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = (username == null || username.isBlank()) ? "guest" : username;
-    }
 
     @Override
     public String toString() {
         return "Post{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                ", createdAt=" + createdAt +
-                ", username='" + username + '\'' +
+                ", createdAt=" + createdAt + '\'' +
                 '}';
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 }
 

@@ -1,3 +1,3 @@
 package com.retrosocial.app.dto;
 
-public record PostWithDate(String content, java.util.Date createdAt) {}
+public record PostWithDate(String content, java.util.Date createdAt, String username) {}
