@@ -46,7 +46,7 @@ function reloadData() {
             $.each(resultData, function (index, post) {
                 $("#posts").append(`
                   <div class="retro-post">
-                    <small class="post-username">${(post.user && post.user.username) || 'guest'}</small>
+                    <small class="post-username">${(post && post.username) || 'guest'}</small>
                     
                     <p class="post-content">${post.content}</p>
                     

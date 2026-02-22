@@ -1,42 +1,32 @@
 package com.retrosocial.app.controller;
 
-import com.retrosocial.app.entity.Post;
-import com.retrosocial.app.entity.User;
-import com.retrosocial.app.repo.PostRepo;
-import com.retrosocial.app.repo.UserRepo;
-import jakarta.validation.Valid;
+import com.retrosocial.app.dto.PostDTO;
+import com.retrosocial.app.dto.PostWithDateDTO;
+import com.retrosocial.app.service.PostsServiceInterface;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class PostsRestController {
-    private final PostRepo postRepository;
-    private final UserRepo userRepository;
+    PostsServiceInterface postService;
 
-    public PostsRestController(PostRepo postRepository, UserRepo userRepository) {
-        this.postRepository = postRepository;
-        this.userRepository = userRepository;
+    public PostsRestController(PostsServiceInterface postService) {
+        this.postService = postService;
     }
 
     @GetMapping("api/posts")
-    public List<Post> getPosts(){
-        return postRepository.findAll();
+    public List<PostWithDateDTO> getPosts(){
+        return postService.findAll();
     }
 
     @PostMapping("api/posts")
-    public Post createPost(@Valid @RequestBody Post post, @RequestParam(required = false) String username) {
-        String effectiveUsername = (username == null || username.isBlank()) ? "guest" : username;
-
-        User user = userRepository.findByUsername(effectiveUsername)
-                .orElseGet(() -> userRepository.save(new User(effectiveUsername)));
-
-        post.setUser(user);
-        return postRepository.save(post);
+    public PostWithDateDTO createPost(@RequestBody PostDTO post, @RequestParam(defaultValue = "guest", required = false) String username) {
+        return postService.save(post, username);
     }
 
     @DeleteMapping("api/posts/{id}")
     public void deletePost(@PathVariable Long id) {
-        postRepository.deleteById(id);
+        postService.deleteById(id);
     }
 }
