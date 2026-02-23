@@ -34,7 +34,12 @@ public class PostsService implements PostsServiceInterface {
         post.setUser(user);
         Post newPost = postRepository.save(post);
         System.out.println("Added post: " + newPost);
-        return new PostWithDateDTO(newPost.getContent(), java.sql.Timestamp.valueOf(newPost.getCreatedAt()), newPost.getUser().getUsername());
+        return new PostWithDateDTO(
+                newPost.getId(),
+                newPost.getContent(),
+                java.sql.Timestamp.valueOf(newPost.getCreatedAt()),
+                newPost.getUser().getUsername()
+        );
     }
 
     @Override
@@ -43,6 +48,7 @@ public class PostsService implements PostsServiceInterface {
         List<PostWithDateDTO> postsWithDate = new ArrayList<>();
         for (Post post : posts) {
             postsWithDate.add(new PostWithDateDTO(
+                    post.getId(),
                     post.getContent(),
                     java.sql.Timestamp.valueOf(post.getCreatedAt()),
                     post.getUser().getUsername()
